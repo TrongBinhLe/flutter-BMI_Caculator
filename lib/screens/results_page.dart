@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/caculator_brain.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:bmi_calculator/widgets/bottom_button.dart';
 import 'package:flutter/material.dart';
@@ -5,9 +6,17 @@ import '../contants.dart';
 
 class ResultsPage extends StatelessWidget {
   static final String routeName = '/results_page';
+  final String bmiResult;
+  final String resultText;
+  final String interpretationText;
+  
+  ResultsPage({@required this.bmiResult, @required this.resultText, @required this.interpretationText});
+
 
   @override
   Widget build(BuildContext context) {
+  // final agr = ModalRoute.of(context).settings.arguments as CaculatorBrain;
+  
     return Scaffold(
       appBar: AppBar(
         title: Text('BMI CACULATOR'),
@@ -35,15 +44,15 @@ class ResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'NORMAL',
+                    resultText,
                     style: kResultTextStyle,
                   ),
                   Text(
-                    '18.3',
+                    bmiResult,
                     style: kBMITextStyle,
                   ),
                   Text(
-                    'Your BMI result is quite low, you should eat more',
+                    interpretationText,
                     textAlign: TextAlign.center,
                     style: kBodyTextStyle,
                   ),

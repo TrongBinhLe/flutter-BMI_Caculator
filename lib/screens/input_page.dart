@@ -4,10 +4,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/bottom_button.dart';
 import '../widgets/round_icon_button.dart';
 
-import 'results_page.dart';
+import './results_page.dart';
 import '../reusable_card.dart';
 import '../icon_content.dart';
 import '../contants.dart';
+import '../caculator_brain.dart';
 
 enum Gender {
   male,
@@ -242,7 +243,14 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             title: 'CACULATE',
             onPress: () {
-              Navigator.of(context).pushNamed(ResultsPage.routeName);
+              CaculatorBrain calc =
+                  CaculatorBrain(height: height, weight: weight);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(bmiResult: calc.caculateBMI(),resultText: calc.getResult(),interpretationText: calc.getInterpretation(),),
+                ),
+              );
             },
           ),
         ],
