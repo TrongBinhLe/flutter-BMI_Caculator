@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import './results_page.dart';
-import './reusable_card.dart';
-import './icon_content.dart';
-import './contants.dart';
+
+import '../widgets/bottom_button.dart';
+import '../widgets/round_icon_button.dart';
+
+import 'results_page.dart';
+import '../reusable_card.dart';
+import '../icon_content.dart';
+import '../contants.dart';
 
 enum Gender {
   male,
@@ -95,6 +99,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
+              onPress: () {},
               colour: kActiveCardColor,
               childCard: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -234,46 +239,14 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {
+          BottomButton(
+            title: 'CACULATE',
+            onPress: () {
               Navigator.of(context).pushNamed(ResultsPage.routeName);
             },
-            child: Container(
-              child: Text(
-                'CACULATE',
-                style: kLabelTextStyle,
-              ),
-              color: kBottomContainerColor,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: kBottomContainerHeight,
-            ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  final IconData icon;
-  final Function onPressed;
-  RoundIconButton({@required this.icon, @required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      elevation: 6.0,
-      child: Icon(icon),
-      constraints: BoxConstraints.tightFor(
-        height: 56.0,
-        width: 56.0,
-      ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
-      onPressed: () {
-        onPressed();
-      },
     );
   }
 }

@@ -4,7 +4,7 @@ import './contants.dart';
 class IconContent extends StatelessWidget {
   IconContent({@required this.icon, @required this.label});
 
-  final IconData icon;
+       final IconData icon;
   final String label;
 
   @override
